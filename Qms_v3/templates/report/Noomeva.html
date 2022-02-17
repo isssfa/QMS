@@ -1,0 +1,319 @@
+{% extends "common_base.html" %}
+{% block main %}
+<style>
+    #report {
+        font-size: 18px;
+    }
+</style>
+<!-- page content -->
+<div class="right_col" role="main" id="report">
+    <div class="row">
+        <div class="card">
+            <div class="card-body">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12" align="center">
+                            <h1>Audit Report - {{form.campaign}} ({{form.campaign_type}})</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 fields">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Associate Name</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{form.associate_name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Employee ID</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{form.emp_id}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Transaction Handled Date</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{form.transaction_handled_date}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Concept</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{form.concept}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Ticket Number</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{form.ticket_number}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Evaluator Name</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{form.evaluator_name}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Audit Date</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{form.audit_date}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Quality Analyst</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{form.quality_analyst}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Team Lead</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{form.team_lead}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Manager</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{form.manager}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>AM</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{form.am}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4>Week</h4>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>{{form.week}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-12 mt-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Customer Experience</h4>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-8">
+                            NCE : If the user is missed to hit "finish" after sending the respective response. If the response is added with unwanted space and Punctuation. If the user name is miss-spelled/alphanumeric name on dashboard,we should use “Hey there!”.
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <h5 id="ce_1">{{form.ce_1}}</h5>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-8">
+                            NCE : If the "You last checked in" user is not sent with respective message or sent twice with the response.
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <h5 id="ce_2">{{form.ce_2}}</h5>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-8">
+                            NCE : If the user are not assigned in spreadsheet. Ex: If the user code is not added in the spreadsheet.
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <h5 id="ce_3">{{form.ce_3}}</h5>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-8">
+                            NCE : If "was assigned to you" users are not hit finish.
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <h5 id="ce_4">{{form.ce_4}}</h5>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-8 score">
+                            Customer Experience Score
+                        </div>
+                        <div class="col-md-4">
+                            <h5 id="ce_score">10</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12 mt-3">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Compliance</h4>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-8">
+                            CE : If a user's query is missed to answer and directly assigned to GS.
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <h5 id="c_1">{{form.compliance_1}}</h5>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-8">
+                            CE : If the user is directly assigned without an Acknowledgement. If the user is sent with irrelevant response. If user is missed to assign to a coach while user wish to be assigned.
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <h5 id="c_2">{{form.compliance_2}}</h5>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-8">
+                            CE : If the response is sent with any irrelevant words or free handed messages. If the task is popped up as UU and YLCI the UU task should be our first priority.
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <h5 id="c_3">{{form.compliance_3}}</h5>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-8">
+                            CE : If the user has a System generated message of cancellation and CRO assigned to next GS. Negative empathy for user’s message!
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <h5 id="c_4">{{form.compliance_4}}</h5>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-8">
+                            CE : If the user is missed to send the survey response and assigned directly. If the survey messages are swapped.
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <h5 id="c_5">{{form.compliance_5}}</h5>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-8">
+                            CE : If the user has a question or information about Covid, that needs to addressed to coaches or Seek a help from the slack channels and then respond to it.
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <h5 id="c_6">{{form.compliance_6}}</h5>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-8 score">
+                            Compliance Score
+                        </div>
+                        <div class="col-md-4">
+                            <h5 id="c_score">10</h5>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-12" id="last">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Areas of improvement</h4>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{form.areas_improvement}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Positives</h4>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{form.positives}}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Comments</h4>
+                        </div>
+                        <div class="col-md-6">
+                            <p>{{form.comments}}</p>
+                        </div>
+                    </div>
+                    <div class="row mt-5 noborder">
+                        <div class="col-md-6">
+                            <h5>Total Score</h5>
+                        </div>
+                        <div class="col-md-6">
+                            <h4 id="tot_score">{{form.overall_score}}</h4>
+                        </div>
+                        <div class="col-md-12 mt-3" align="center">
+                            <a href="#" onclick="history.back();" class="btn btn-info btn-lg">Back</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<script type="text/javascript">
+    var ce_1 = parseInt($('#ce_1').html());
+    var ce_2 = parseInt($('#ce_2').html());
+    var ce_3 = parseInt($('#ce_3').html());
+    var ce_4 = parseInt($('#ce_4').html());
+    $('#ce_score').html(ce_1+ce_2+ce_3+ce_4);
+    var c_1 = parseInt($('#c_1').html());
+    var c_2 = parseInt($('#c_2').html());
+    var c_3 = parseInt($('#c_3').html());
+    var c_4 = parseInt($('#c_4').html());
+    var c_5 = parseInt($('#c_5').html());
+    var c_6 = parseInt($('#c_6').html());
+    $('#c_score').html(c_1+c_2+c_3+c_4+c_5+c_6);
+</script>
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends "agent_base.html" %}
+
+{% block main %}
+        <!-- page content -->
+        <div class="right_col" role="main">
+
+          <div class="page-title">
+            <div class="title_left">
+              {% if type == "all" %}
+              <h3>All Audits</h3>
+              {% endif %}
+              {% if type == "month" %}
+              <h3>This Month's Audits</h3>
+              {% endif %}
+              {% if type == "open" %}
+              <h3>Open Audits</h3>
+              {% endif %}
+              {% if type == "dispute" %}
+              <h3>Dispute Audits</h3>
+              {% endif %}
+              {% if type == "fatal" %}
+              <h3>This Month's Fatal Audits</h3>
+              {% endif %}
+              {% if type == "range" %}
+              <h3>Reports</h3>
+              {% endif %}
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card">
+                <div class="card-body">
+                  <table  id="datatablex" class="table table-striped" style="width: 100%;">
+                    <thead>
+                      <tr>
+                        <th>Audit Date</th>
+                        <th>Employee Id</th>
+                        <th>Audit Date</th>
+                        <th>Campaign</th>
+                        <th>QA</th>
+                        <th>Customer Name</th>
+                        <th>Category</th>
+                        <th>Overall Score</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tfoot>
+                      <tr>
+                        <th>Audit Date</th>
+                        <th>Employee Id</th>
+                        <th>Audit Date</th>
+                        <th>Campaign</th>
+                        <th>QA</th>
+                        <th>Customer Name</th>
+                        <th>Category</th>
+                        <th>Overall Score</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </tfoot>
+                    <tbody>
+                    {% for j in audit %}
+                      {% for i in j %}
+                      <tr>
+                        <td>{{i.audit_date}}</td>
+                        <td>{{i.emp_id}}</td>
+                        <td>{{i.audit_date}}</td>
+                        <td>{{i.campaign}}</td>
+                        <td>{{i.quality_analyst}}</td>
+                        <td>
+                          {% if i.customer_name %}
+                            {{i.customer_name}}
+                          {% else %}
+                            No Customer Name
+                          {% endif %}
+                        </td>
+                        <td>{{i.campaign_type}}</td>
+                        <td>{{i.overall_score}}</td>
+                        <td>
+                          {% if i.status == True %}
+                             Closed
+                          {% elif i.dispute_status == True %}
+                              Dispute
+                          {% else %}
+                              Open
+                          {% endif %}
+                        </td>
+                        <td>
+                          <form action="/agent-report" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="hidden" name="id" value="{{i.id}}">
+                            <input type="hidden" name="type" value="{{i.page_type}}">
+                            <button class="btn btn-sm btn-primary">View</button>
+                          </form>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                    {% endfor %}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+{% endblock %}

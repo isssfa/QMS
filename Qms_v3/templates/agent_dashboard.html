@@ -1,0 +1,198 @@
+{% extends "agent_base.html" %}
+
+{% block main %}
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="row mb-3">
+            <div class="col-md-2">
+              <div class="card-base">
+                <div class="card-icon">
+                  <span title="All Audits" id="widgetCardIcon" class="imagecard">
+                    <i class="fa fa-database"></i>
+                  </span>
+                  <div class="card-data widgetCardData">
+                    <h2 class="box-title mt-5" style="color: #2A3F54;">All Audits</h2>
+                    <h1>{{all_total}}</h1>
+                    <a href="/emp-report/all" title="Style Builder" class="anchor btn btn-default" style="background: #1ABB9C; color: #fff;">
+                      View
+                    </a>
+                  </div>
+                </div>
+                <div class="space"></div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card-base">
+                <div class="card-icon">
+                  <span title="All Audits" id="widgetCardIcon" class="imagecard">
+                    <i class="fa fa-calendar"></i>
+                  </span>
+                  <div class="card-data widgetCardData">
+                    <h2 class="box-title mt-5" style="color: #2A3F54;">This Month's Audits</h2>
+                    <h1>{{month_all_total}}</h1>
+                    <a href="/emp-report/month" title="Style Builder" class="anchor btn btn-default" style="background: #1ABB9C; color: #fff;">
+                      View
+                    </a>
+                  </div>
+                </div>
+                <div class="space"></div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card-base">
+                <div class="card-icon">
+                  <span title="Open Audits" id="widgetCardIcon" class="imagecard">
+                    <i class="fa fa-pencil"></i>
+                  </span>
+                  <div class="card-data widgetCardData">
+                    <h2 class="box-title mt-5" style="color: #2A3F54;">Open Audits</h2>
+                    <h1>{{open_total}}</h1>
+                    <a href="/emp-report/open" title="Style Builder" class="anchor btn btn-default" style="background: #1ABB9C; color: #fff;">
+                      View
+                    </a>
+                  </div>
+                </div>
+                <div class="space"></div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card-base">
+                <div class="card-icon">
+                  <span title="Dispute Audits" id="widgetCardIcon" class="imagecard">
+                    <i class="fa fa-times"></i>
+                  </span>
+                  <div class="card-data widgetCardData">
+                    <h2 class="box-title mt-5" style="color: #2A3F54;">Dispute Audits</h2>
+                    <h1>{{dispute_total}}</h1>
+                    <a href="/emp-report/dispute" title="Style Builder" class="anchor btn btn-default" style="background: #1ABB9C; color: #fff;">
+                      View
+                    </a>
+                  </div>
+                </div>
+                <div class="space"></div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card-base">
+                <div class="card-icon">
+                  <span title="All Audits" id="widgetCardIcon" class="imagecard">
+                    <i class="fa fa-exclamation-circle"></i>
+                  </span>
+                  <div class="card-data widgetCardData">
+                    <h2 class="box-title mt-5" style="color: #2A3F54;">This Month's Fatal Audits</h2>
+                    <h1>{{fatal_total}}</h1>
+                    <a href="/emp-report/fatal" title="Style Builder" class="anchor btn btn-default" style="background: #1ABB9C; color: #fff;">
+                      View
+                    </a>
+                  </div>
+                </div>
+                <div class="space"></div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card-base">
+                <div class="card-icon">
+                  <span title="Dispute Audits" id="widgetCardIcon" class="imagecard">
+                    <i class="fa fa-exclamation-triangle"></i>
+                  </span>
+                  <div class="card-data widgetCardData">
+                    <h2 class="box-title mt-5" style="color: #2A3F54;">This Month's Fatals</h2>
+                    <br>
+                    <h1>{{fatal}}</h1>
+                  </div>
+                </div>
+                <div class="space"></div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2">
+              <div class="card-base">
+                <div class="card-icon">
+                  <span title="Dispute Audits" id="widgetCardIcon" class="imagecard">
+                    <i class="fa fa-tasks"></i>
+                  </span>
+                  <div class="card-data widgetCardData">
+                    <h2 class="box-title mt-5" style="color: #2A3F54;">This Month's Score</h2>
+                    <br>
+                    {% if average ==  "No Audits This Month" %}
+                    <h5>{{average}}</h5>
+                    {% else %}
+                    <h1>{{average|floatformat:2}}%</h1>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="space"></div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <div class="card-base">
+                <div class="card-icon">
+                  <span title="All Audits" id="widgetCardIcon" class="imagecard">
+                    <i class="fa fa-lightbulb-o"></i>
+                  </span>
+                  <div class="card-data widgetCardData">
+                    <h2 class="box-title mt-5" style="color: #2A3F54;">Coaching Closure</h2>
+                    <br>
+                    {% if coaching_closure ==  "No Audits" %}
+                    <h5>{{coaching_closure}}</h5>
+                    {% else %}
+                    <h1>{{coaching_closure|floatformat:2}}%</h1>
+                    {% endif %}
+                  </div>
+                </div>
+                <div class="space"></div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-header">
+                  <h5>Audit Report</h5>
+                </div>
+                <div class="card-body">
+                  <div class="row">
+                    <form action="/emp-report/range" method="POST" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      <div class="col-md-12">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="start">Start Date</label>
+                              <input type="date" onchange="end_datefn()" name="start_date" id="start" required class="form-control">
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label for="end">End Date</label>
+                              <input type="date"  name="end_date" id="end" required class="form-control">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <button class="btn btn-success form-control">Submit</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+{% endblock %}
+
+{% block scripts %}
+<script>
+  $today = new Date();
+  $today = moment($today).format("YYYY-MM-DD");
+  $start = $("#start");
+  $end = $("#end");
+  $start.attr("max",$today)
+  $end.attr("max",$today)
+  function end_datefn(){
+    $start = $("#start").val()
+    $end.attr("min",$start)
+  }
+</script>
+{% endblock %}
